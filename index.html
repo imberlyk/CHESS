@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Interactive 3D Model</title>
+  <title>3D Chess Viewer</title>
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
   <style>
     body {
@@ -12,110 +12,24 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background-color: #f0f0f0;
+      background-color: #ffffff;
     }
-
-    .container {
-      position: relative;
+    model-viewer {
       width: 100%;
       max-width: 800px;
       height: 500px;
-      background-color: transparent;
-    }
-
-    model-viewer {
-      width: 100%;
-      height: 100%;
-    }
-
-    .circle {
-      position: absolute;
-      width: 30px;
-      height: 30px;
-      background-color: rgba(255, 0, 0, 0.8);
-      border-radius: 50%;
-      cursor: pointer;
-      border: 2px solid white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .text-box {
-      position: absolute;
-      top: 50px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80%;
-      padding: 20px;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      display: none;
-      z-index: 10;
-    }
-
-    .text-box p {
-      margin: 0;
-      font-size: 16px;
-      line-height: 1.5;
-    }
-
-    .text-box .close-btn {
-      position: absolute;
-      top: 10px;
-      right: 10px;
-      background: none;
-      border: none;
-      font-size: 18px;
-      cursor: pointer;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <!-- 3D Model Viewer -->
-    <model-viewer
-      src="./models/chess.glb"
-      alt="A 3D chess piece"
-      ar
-      auto-rotate
-      camera-controls
-      background-color="#ffffff">
-    </model-viewer>
 
-    <!-- Interactive Circles -->
-    <div class="circle" style="top: 20%; left: 40%;" data-text="This is some detailed text about Point 1."></div>
-    <div class="circle" style="top: 50%; left: 60%;" data-text="This is some detailed text about Point 2."></div>
-    <div class="circle" style="top: 70%; left: 30%;" data-text="This is some detailed text about Point 3."></div>
-
-    <!-- Text Box -->
-    <div class="text-box" id="textBox">
-      <button class="close-btn" onclick="closeTextBox()">×</button>
-      <p id="textBoxContent"></p>
-    </div>
-  </div>
-
-  <script>
-    // JavaScript to handle interaction
-    const circles = document.querySelectorAll('.circle');
-    const textBox = document.getElementById('textBox');
-    const textBoxContent = document.getElementById('textBoxContent');
-
-    // Event listener for each circle
-    circles.forEach(circle => {
-      circle.addEventListener('click', () => {
-        const text = circle.getAttribute('data-text');
-        textBoxContent.textContent = text;
-        textBox.style.display = 'block';
-      });
-    });
-
-    // Close text box
-    function closeTextBox() {
-      textBox.style.display = 'none';
-    }
-  </script>
+  <model-viewer
+    src="./models/chess.glb"
+    alt="A 3D chess piece"
+    ar
+    auto-rotate
+    camera-controls
+    background-color="#ffffff">
+  </model-viewer>
 </body>
 </html>
