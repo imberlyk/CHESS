@@ -20,6 +20,7 @@
       width: 100%;
       max-width: 800px;
       height: 500px;
+      background-color: transparent;
     }
 
     model-viewer {
@@ -42,8 +43,9 @@
 
     .text-box {
       position: absolute;
-      top: 10%;
-      left: 10%;
+      top: 50px;
+      left: 50%;
+      transform: translateX(-50%);
       width: 80%;
       padding: 20px;
       background-color: white;
@@ -73,6 +75,7 @@
 </head>
 <body>
   <div class="container">
+    <!-- 3D Model Viewer -->
     <model-viewer
       src="./models/chess.glb"
       alt="A 3D chess piece"
@@ -83,9 +86,9 @@
     </model-viewer>
 
     <!-- Interactive Circles -->
-    <div class="circle" style="top: 20%; left: 40%;" data-text="This is some detailed text about Point 1.">1</div>
-    <div class="circle" style="top: 50%; left: 60%;" data-text="This is some detailed text about Point 2.">2</div>
-    <div class="circle" style="top: 70%; left: 30%;" data-text="This is some detailed text about Point 3.">3</div>
+    <div class="circle" style="top: 20%; left: 40%;" data-text="This is some detailed text about Point 1."></div>
+    <div class="circle" style="top: 50%; left: 60%;" data-text="This is some detailed text about Point 2."></div>
+    <div class="circle" style="top: 70%; left: 30%;" data-text="This is some detailed text about Point 3."></div>
 
     <!-- Text Box -->
     <div class="text-box" id="textBox">
@@ -100,6 +103,7 @@
     const textBox = document.getElementById('textBox');
     const textBoxContent = document.getElementById('textBoxContent');
 
+    // Event listener for each circle
     circles.forEach(circle => {
       circle.addEventListener('click', () => {
         const text = circle.getAttribute('data-text');
@@ -108,6 +112,7 @@
       });
     });
 
+    // Close text box
     function closeTextBox() {
       textBox.style.display = 'none';
     }
